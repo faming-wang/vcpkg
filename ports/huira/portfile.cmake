@@ -4,10 +4,8 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO huira-render/huira
     REF "v${VERSION}"
-    SHA512 971d8e5d1c7ae899fc5e76ba14dc5ae4224dda7fc1110f1a93b55b99929453a671a4415214d44874a74f413668c8b422b4abad1b499454c08101604a4328206e
+    SHA512 384befcf8b434a02346ce4fa2ba05918ddce47bbafc68b7c6b7e7c13c945c0b9a21ad683e68938e696103622b6e9ecb8e76d17cb9dee1f54f372446f906b934e
     HEAD_REF main
-    PATCHES
-        cfitsio.diff
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
@@ -21,6 +19,7 @@ vcpkg_cmake_configure(
         ${FEATURE_OPTIONS}
         -DHUIRA_NATIVE_ARCH=OFF
         -DHUIRA_TESTS=OFF
+        -DCMAKE_DISABLE_FIND_PACKAGE_PkgConfig=ON
 )
 vcpkg_cmake_install()
 vcpkg_copy_pdbs()
